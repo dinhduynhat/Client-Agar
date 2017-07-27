@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="google-site-verification" content="N8K7zlgUMl8_lJJQhztKQWO53inpdmfCNOmQwx_jjg8" />
+<title>Vua Nuốt Cá</title>
+<script src="toastr.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+<link href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" rel="stylesheet" type="text/css">
+<link href="toastr.css" rel="stylesheet" type="text/css">
+<link href='css/default.css' rel='stylesheet' type='text/css'>
+    <script src="js/reader.js"></script>
+    <script src="js/writer.js"></script>
+    <script src="js/vtr.js"></script>
+    <script src="js/quad.js"></script>
+    <script src="js/gameclient.js"></script>
+    <script src="js/shw14.js"></script>
+<!-- <script src="js/minimap.js"></script> <!-- 테스트용 20170303 -->
+</head>
+
+<body>
+    <div class="modal fade" id="inPageModal" role="dialog">
+        <div class="modal-dialog" style="width:650px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="inPageModalTitle" class="modal-title">Thất bại truy cập</h4>
+                </div>
+                <div id="inPageModalBody" class="modal-body">
+                    <p>Kết nối thất bại. Hoặc máy chủ được kiểm tra có thể được chấm dứt. Vui lòng kiểm tra kết nối Internet của bạn.</p>
+                    <div class="center">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+    <div id="overlays">
+	
+	<div id="advert" style="background-color: none; z-index: 0;">
+        <div id="scorebox" style="height: 325px; width: 300px; transform: translate(-50%, -50%); left: 25%;">
+            <div id="stats" style="width: 100%; height: 230px; padding: 0px 0px 300px; overflow: hidden;" class="agario-panel">
+                <canvas height="230" width="200" id="statsGraph"></canvas>
+                <div id="statsHighestMassContainer" style="width: 87px"><span id="statsTextMass" class="stats-highest-mass">127</span><span id="statsSubtext" data-itr="stats_highest_mass">Maximum size</span></div>
+                <div id="statsTimeAliveContainer" style="width: 87px"><span id="statsTextTime" class="stats-time-alive">1:38</span><span id="statsSubtext" data-itr="stats_time_alive">Play time</span></div>
+                <div id="statsPelletsContainer" style="width: 87px"><span id="statsTextFood" class="stats-highest-mass">21</span><span id="statsSubtext" data-itr="stats_pellets_eat">Eaten food</span></div>
+                <div id="statsCellsEatenContainer" style="width: 87px"><span id="statsTextCell" class="stats-time-alive">0</span><span id="statsSubtext" data-itr="stats_cell_eat">Cells eaten</span></div>
+                <div id="statsVirusContainer" style="width: 87px"><span id="statsTextVirus" class="stats-highest-mass">0</span><span id="statsSubtext" data-itr="stats_virus_eat">Viruses eaten</span></div>
+                <div id="statsPlayerContainer" style="width: 87px"><span id="statsTextPlayer" class="stats-time-alive">0</span><span id="statsSubtext" data-itr="stats_players_eat">Players eaten</span></div>
+            </div>
+            <center>
+                
+            </center>
+            <!--<hr>
+            <!-- // Your ADD Window use 320x100 ass add size //
+            <div class="form-group" style="height: 100px; width: 320px;margin: 0px 3.5px;text-align: center; background-color: rgba(36, 51, 66, 0.2);">
+
+                <!-- Smaller Add 
+                <ins class="adsbygoogle" style="display:inline-block;width:320px;height:100px" data-ad-client="ca-pub-4992689184235190" data-ad-slot="4031234669"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>-->
+        </div>
+    </div>
+        <div id="helloContainer">
+           <form role="form">
+				<div id="main">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#메인" role="tab" data-toggle="tab">Home</a>
+                        </li>
+						            </br>
+						            </br>
+                        <li role="presentation">
+                            <a href="#옵션" role="tab" data-toggle="tab">Setting</a>
+                        </li>
+                    </ul>
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane fade in active" id="메인">
+							<div class="form-group">
+								<div id="cafe-image">
+									<img src="../img/logo.png" width="130" height="70" id="logo">
+								</div>
+								<div id="nickContainer">
+									<input id="nick" class="form-control save" data-box-id="0" placeholder="Nick" maxlength="35" />
+								</div>
+							</div>
+								<!--<button type="button" class="btn btn-info btn-rule" onclick="location.href='http://agark.kr/rule';" >서버 규정</button>-->
+								<button onclick="play(document.getElementById('nick').value); return false;" class="btn btn-primary btn-play btn-sv">Play</button>
+								<button onclick="spectate(); return false;" class="btn btn-warning btn-spectate btn-sv">Spectate</button>
+								<!--<button type="button" class="btn btn-info btn-special" onclick="special(); return false;">전설 특문</button>-->
+								<!--<a href="http://cafe.naver.com/agario" class="btn-primary btn btn-green" role="button">카페 방문</a>-->
+						</div>
+
+						<div role="tabpanel" class="tab-pane fade" id="main2">
+								<div id="main3">
+									</br>
+									</br>
+									<h4>추가main2</h4>
+									<input type="hidden" class="save" data-box-id="6" onchange="setSmooth($(this).is(':checked'));">
+
+									<input type="checkbox" class="save" data-box-id="1" onchange="setSkins(!$(this).is(':checked'));"> Skin X</label>
+
+									<input type="checkbox" class="save" data-box-id="2" onchange="setNames(!$(this).is(':checked'));"> Name X</label>
+
+									<input type="checkbox" class="save" data-box-id="3" onchange="setDarkTheme($(this).is(':checked'));"> Black color</label>
+
+									<input type="checkbox" class="save" data-box-id="4" onchange="setColors($(this).is(':checked'));"> Color</label>
+
+									<input type="checkbox" class="save" data-box-id="5" onchange="setChatHide($(this).is(':checked'));"> Chat</label>
+
+									<br>
+
+									<input type="checkbox" id="mmonoff" class="save" data-box-id="11" onchange="setMiniMap($(this).is(':checked'));"> Minimap</label>
+
+									<input type="checkbox" class="save" data-box-id="7" onchange="setBorder($(this).is(':checked'));"> Edge</label>
+
+									<input type="checkbox" class="save" data-box-id="8" onchange="setMapGrid($(this).is(':checked'));"> Background</label>
+
+									<input type="checkbox" class="save" data-box-id="9" onchange="setKillsInfo($(this).is(':checked'));"> record</label>
+
+									<input type="checkbox" class="save" data-box-id="10" onchange="setDrawAlpha($(this).is(':checked'));"> Transparency</label>
+
+									<br>Chất lượng đồ họa : <span id="range">Cao</span>
+									<input type="range" class="save" data-box-id="20" min="0" max="4" value="3" step="1" onchange="setQuality($(this).val());"></label>
+								</div>
+							</div>
+									<button onclick="play(document.getElementById('nick').value); return false;" class="btn btn-primary btn-play btn-sv">Play</button>
+									<button onclick="spectate(); return false;" class="btn btn-warning btn-spectate btn-sv">Spectate</button>
+									<a href="#" class="btn btn-default btn-special" role="button">Demo 1</button>
+									<a href="#" class="btn-primary btn btn-green" role="button">Demo 2</a>
+
+							<button type="button" class="btn btn-default btn-crew" onclick="location.href='#';" >Group</button>
+							<button type="button" class="btn btn-default btn-music" onclick="location.href='#';" >Contact</button>
+							<input id="myskin" class="form-control save" data-box-id="50" type="hidden" />
+
+						</div>
+					</div>
+				</form>
+			</div>
+            <div id="myviewskin" class="form-group" style="background-image: url('../skins/default.png');display:none;"></div>
+        </div>
+    </div>
+	
+	
+    <div id="connecting">
+            <h2>Lỗi kết nối</h2>
+            <p>Hoặc máy chủ đã tắt, server dừng máy chủ.</p>
+    </div>
+
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <div id="livekills"></div>
+    <input type="text" id="chat_textbox" placeholder="Nhấn Enter để chat" maxlength="200" />
+<!--<img src="img/minimap.png" width="200" height="200" alt="Position" id="imgpos">-->
+<script>
+setDrawAlpha(false);
+
+var interval;
+var switchy = false;
+$(document).on('keydown',function(e){
+    if(e.keyCode == 81){
+        if(switchy){
+            return;
+        }
+        switchy = true;
+        interval = setInterval(function() {
+            $("body").trigger($.Event("keydown", { keyCode: 87}));
+            $("body").trigger($.Event("keyup", { keyCode: 87}));
+        }, 3);
+    }
+});
+
+$(document).on('keyup',function(e){
+    if(e.keyCode == 81){
+        switchy = false;
+        clearInterval(interval);
+        return;
+    }
+});
+</script>
+</body>
+</html>

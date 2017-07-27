@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Agario PVP SERVER - Agario Private Server. Online and play Agario as fast players on.">
+    <meta http-equiv="content-language" content="tr">
+    <meta name="alexaVerifyID" content="WBCOEXxt1ozdCDcGqKmMZCC6eIE" />
+    <meta name="keywords" content="Agariobid agario, agar, io, agario pvp, agar io pvp server, agar io private server, agar online, agariok, agarz, agarw, kralagario, agario.zafer2, agarpvp, agarioo, inciagario, oyun02, agariot, agarios, agarion, agariogo">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta property="og:title" content="Agario" />
+    <meta property="og:description" content="Agario PVP SERVER - Agario Private Server. Online and play Agario as fast players on Agario" />
+    <meta property="og:url" content="index.html" />
+    <meta property="og:image" content="1200x630.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <title>Vua Nuốt Cá</title>
+    <link id="favicon" rel="icon" type="image/png" href="favicon.png" />
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Ubuntu:700' />
+    <link href="./css/cagar.css" rel="stylesheet">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap-social.css" rel="stylesheet">
+    <link href="./css/font-awesome.css" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+    <link href="./css/metro-bootstrap.min.css" rel="stylesheet">
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/Vector2.js"></script>
+    <script src="./js/main_out.js"></script>
+    <script src="./js/language.js"></script>
+    <script src="./stats.min.js"></script>
+    <link href="https://daneden.github.io/animate.css/animate.min.css" rel="stylesheet">
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-70768056-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script type="text/javascript">
+        (function(d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter34504465 = new Ya.Metrika({
+                        id: 34504465,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true
+                    });
+                } catch (e) {}
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function() {
+                    n.parentNode.insertBefore(s, n);
+                };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else {
+                f();
+            }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/34504465" style="position:absolute; left:-9999px;" alt=""/></div></noscript>
+    <script>
+        var knownNameDict = '';
+
+        function limg(n, i) {
+            d = document.getElementById(i);
+            var skinName = n.toLowerCase();
+            if (skinName.indexOf('[') != -1) {
+                var clanStart = skinName.indexOf('[');
+                var clanEnd = skinName.indexOf(']');
+                skinName = skinName.slice(clanStart + 1, clanEnd);
+            } else {
+                skinName = skinName;
+            }
+            if (-1 != knownNameDict.indexOf(skinName)) {
+                d.src = "skins/" + skinName + ".png";
+            } else {
+                d.src = "skins/undefined.png";
+            }
+            return skinName;
+        }
+    </script>
+</head>
+<div id="overlays" style="display:none; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: rgba(0,0,0,0.5); z-index: 200;">
+    <div id="helloContainer" data-logged-in="0" data-has-account-data="0" data-party-state="0" data-results-state="0" data-gamemode="" style="transform: translate(-50%, -50%);">
+        <canvas width="350" style="position: absolute;top: 0px;left: 0px;margin-right: -50%;border-radius:8px; " height="70" class="cell-spinner" data-size="26"></canvas>
+        <div class="creating-party-text">Vua Nuốt Cá</div>
+
+        <div class="side-container partyMenu">
+            <div class="agario-party">
+                <div class="agario-panel agario-side-panel agario-party-0">
+                    <h4>
+                        <center data-itr="party"></center>
+                    </h4>
+                    <div style="margin-bottom: 12px;" data-itr="party_description">Agario'da aynı haritada arkadaşlarınızla oynamak</div>
+                    <div class="clearfix" style="margin: 0px -10px 0px -10px;">
+                        <button class="btn btn-primary" style="width: 102.5px; float: left;" onclick="$('#helloContainer').attr('data-party-state', '3');createParty();" data-itr="create_party">Create</button>
+                        <button class="btn btn-primary" style="width: 102.5px; float: right;" onclick="$('#helloContainer').attr('data-party-state', '2');" data-itr="join_party">Join</button>
+                    </div>
+                </div>
+                <div class="agario-panel agario-side-panel agario-party-1">
+                    <h4>
+                        <center data-itr="party">Party</center>
+                    </h4>
+                    <div style="margin-bottom: 12px;" data-itr="create_party_instructions">Arkadaşlarınıza Agario.Metin2Force.com linki ver:</div>
+                    <div class="clearfix">
+                        <input type="text" value="??????" readonly="" class="partyToken form-control" style="cursor: text; width: 130px; float: left; border-radius: 4px 0px 0px 4px;">
+                        <button class="btn btn-primary copy-party-token" style="float: right; width: 60px; border-radius: 0px 4px 4px 0px;">Copy</button>
+                    </div>
+                </div>
+                <div class="agario-panel agario-side-panel agario-party-2">
+                    <h4>
+                        <center data-itr="party">Party</center>
+                    </h4>
+                    <div style="margin-bottom: 12px;" data-itr="join_party_instructions">Agario.Metin2Force.com arkadaşınız burada yazın size bir kod vermiş olması gerekir:</div>
+                    <input id="joinPartyToken" type="text" value="" class="form-control">
+                    <div class="clearfix" style="margin: 10px -10px 0px -10px;">
+                        <button class="btn btn-primary" style="width: 210px; float: right;" onclick="joinParty($('#joinPartyToken').val());" data-itr="join_party">Join</button>
+                    </div>
+                </div>
+                <div class="agario-panel agario-side-panel agario-party-3" style="padding: 0px; overflow: hidden; position: relative;">
+                    <canvas width="220" height="100" class="cell-spinner" data-size="26"></canvas>
+                    <div class="creating-party-text" data-itr="creating_party">Parti Kuruluyor...</div>
+                </div>
+                <div class="agario-panel agario-side-panel agario-party-4" style="padding: 0px; overflow: hidden; position: relative;">
+                    <canvas width="220" height="100" class="cell-spinner" data-size="26"></canvas>
+                    <div class="creating-party-text" data-itr="joining_party">Partiye katılıyor...</div>
+                </div>
+                <div class="agario-panel agario-side-panel agario-party-5">
+                    <h4>
+                        <center data-itr="party">Party</center>
+                    </h4>
+                    <div style="margin-bottom: 12px;" data-itr="joined_party_instructions">Artık bu parti ile oynuyorsun:</div>
+                    <div class="clearfix">
+                        <input type="text" value="??????" readonly="" class="partyToken form-control" style="cursor: text; width: 125px; float: left;">
+                        <button class="btn btn-primary copy-party-token" style="float: right; width: 60px;">Copy</button>
+                    </div>
+                </div>
+                <div class="agario-panel agario-side-panel agario-party-6">
+                    <h4>
+                        <center data-itr="party">Party</center>
+                    </h4>
+                    <div style="margin-bottom: 12px;" data-itr="party_join_error">O partiye katılma bir sorun vardı , Lütfen kodun doğru olduğundan emin olun , ya da başka bir parti oluşturmayı deneyin lütfen</div>
+                    <div class="clearfix" style="margin: 10px -10px 0px -10px;">
+                        <button class="btn btn-primary btn-block" onclick="$('#helloContainer').attr('data-party-state', '0');" data-itr="back_button">Back</button>
+                    </div>
+                </div>
+                <div style="position: absolute; right: 10px; top: 4px;">
+                    <button type="button" class="close" onclick="cancelParty();">×</button>
+                </div>
+            </div>
+        </div>
+
+
+        <form role="form">
+            <div class="form-group">
+
+                <div style="float: left; margin-left: 20px;">
+                    <h2>&nbsp;</h2>
+                </div>
+
+                <div id="geri" style="float: right;margin-right: 20px;display: none;"><button onclick="showbox('#agar');$('#geri').hide();return false;" style="width: 100%;" class="btn btn-info btn-settings"><i class="glyphicon glyphicon-arrow-left"></i></button></div>
+
+                <br clear="both" />
+            </div>
+
+            <div id="loginscreen">
+                <div id="locationUnknown">
+                    <select id="region" style="display: none;" class="form-control" onchange="setRegion($('#region').val());" required>
+                    <option disabled value=""> -- Select a Region --</option>
+                    <option selected value="TK-Turkey">Turkey</option>
+                </select>
+                </div>
+                <div>
+                    <div class="text-muted region-message CN-China">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        &nbsp;
+                        <input id="nick" class="form-control" data-plc="nickname" maxlength="14" value="Agario.Metin2Force.com" style="margin-bottom:-20px;"> &nbsp;
+
+                        </br>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    </div>
+                    <button onclick="$('#settings').toggle();return false;" class="btn btn-info btn-settings" style="background-color:#3a5594;border-color:#3a5594;height:40px;"><img src="./img/setting.png" height="20" width="20"></button>
+
+                    <button type="submit" id="playBtn" onclick="setNick(''+document.getElementById('nick').value); return false;" class="btn btn-play btn-success btn-needs-server" style="background-color:#3a5594;border-color:#3a5594;height:40px;"><center><p style="margin:0 auto; color:#ffffff; font-size:20px;"><strong><img src="./img/play.png" height="20" width="20"> Play</strong>
+</p></center></button>
+                    <br clear="both" /> </div>
+
+
+                <div id="settings" class="checkbox" style="display:none;">
+
+                    <div class="form-group" id="mainform">
+                        <div id="locationKnown"></div>
+
+                    </div>
+                    <h3 style="margin-top:-30px;">Setting</h3>
+                    <label><input type="checkbox" onchange="setSkins(!$(this).is(':checked'));"><span data-itr="option_no_skins"></span></label>
+                    <label><input type="checkbox" onchange="setNames(!$(this).is(':checked'));"><span data-itr="option_no_names"></span></label>
+                    <label><input type="checkbox" onchange="setColors($(this).is(':checked'));"><span data-itr="option_no_colors"></span></label>
+                    <label><input type="checkbox" onchange="setShowMass($(this).is(':checked'));"><span data-itr="option_show_mass"></span></label>
+                    <label><input type="checkbox" onchange="setDarkTheme($(this).is(':checked'));"><span data-itr="option_dark_theme"></span></label>
+                    <label><input type="checkbox" onchange="setHideChat($(this).is(':checked'));"><span data-itr="option_hide_chatbox"></span></label>
+                    <label><input type="checkbox" onchange="setSmooth($(this).is(':checked'));"><span data-itr="option_hide_smooth"></span></label>
+                    <label><input type="checkbox" onchange="setSkipStat($(this).is(':checked'));"><span data-itr="option_skip_stats"></span></label>
+
+
+                </div>
+
+        </form>
+
+        <button style="background-color:#d64d42;border-color:#d64d42;margin-bottom:10px;width: 49%;float:left;height:40px;" id="spectateBtn" onclick="spectate(); return false;" class="btn btn-warning btn-spectate btn-needs-server"><p style="margin:0 auto; color:#ffffff; font-size:17.5px;"><strong><img src="./img/spectate.png" height="20" width="20"> Spectate</strong>
+</p>
+                    </button>
+
+
+        <button type="button" class="btn btn-danger btn-user" style="float:right;width: 49%;margin-bottom:10px;background-color:#d64d42;border-color:#d64d42;height:40px;" onclick="showbox('#leaderboard');"><p style="margin:0 auto; color:#ffffff; font-size:17.5px;"  ><strong><img src="./img/leaderboard.png" height="20" width="20"> Leaderboard</strong>
+</p></button><br>
+        <div>
+            <a href="/skins.html" target="_blank"><button type="button" style="float:left;width: 49%;height:40px;background-color:#d64d42;margin-bottom:10px;border: 0;"><p style="margin:0 auto; color:#ffffff; font-size:17.5px;margin-top:2.5px"><strong><img src="./img/search.png" height="20" width="20"> Skins List</strong></p></button></a>
+
+            <a href="#" target="_blank"><button type="button" style="float:right;margin-bottom:10px;width: 49%;height:40px;background-color:#d64d42;border: 0;"><p style="margin:0 auto; color:#ffffff; font-size:17.5px;margin-top:5px"><strong><img src="./img/plus.png" height="20" width="20"> Upload Skins</strong></p></button></a>
+        </div>
+        <button onclick="$('#oynanis').toggle();return false;" style="width:100%;height:40px;background-color:#636563;border-color:#636563;height:40px;border:0;"><p style="margin:0 auto; color:#ffffff; font-size:17.5px;"><strong>How To Play<img src="./img/question.png" height="30" width="20"> </strong></p></button>
+        <span class="text-muted">
+<center>
+
+<div id="oynanis" class="checkbox" style="display:none;margin:0 auto; ">
+<br>			<span>Press <b>Space</b> to split</span> <br>
+        <span>Press <b>W</b> to eject some mass
+</span><br>
+        <hr>
+
+        <a>Contact me</a>
+
+        </span>
+        </div>
+        </center>
+
+
+        <div id="instructions">
+            <center>
+                <hr style="margin-bottom:0px;">
+                <br><a href="privacy.txt" target="_blank" data-itr="privacy_policy" class="text-muted"></a> |
+                <a href="terms.txt" target="_blank" data-itr="terms_of_service" class="text-muted"></a> |
+                <a href="changelog.txt" data-itr="changelog" target="_blank" class="text-muted"></a>
+
+                <br>
+            </center>
+
+        </div>
+
+
+
+        <!-- Agario Giris reklam -->
+
+
+    </div>
+
+</div>
+
+
+</center>
+
+</div>
+</div>
+<center>
+
+
+    <!-- Modal -->
+    <div class="modal fade bs-example-modal-sm" id="modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Profile</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="statoverlay" style="display:none; position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 200;background-color:rgba(0,0,0,0.5);">
+
+
+        <div id="stats" style="display: none;height:310px;width:310px;" class="warball-panel">
+            <h2>
+                <center><span data-itr="match_results"></span></center>
+            </h2>
+
+            <div id="statsPelletsContainer">
+
+                <span id="statsText" class="stats-food-eaten"></span>
+                <span id="statsSubtext" data-itr="stats_food_eaten"></span>
+            </div>
+            <div id="statsHighestMassContainer">
+
+                <span id="statsText" class="stats-highest-mass"></span>
+                <span id="statsSubtext" data-itr="stats_highest_mass"></span>
+            </div>
+            <div id="statsTimeAliveContainer">
+
+                <span id="statsText" class="stats-time-alive"></span>
+                <span id="statsSubtext" data-itr="stats_time_alive"></span>
+            </div>
+            <div id="statsTimeLeaderboardContainer">
+
+                <span id="statsText" class="stats-leaderboard-time"></span>
+                <span id="statsSubtext" data-itr="stats_leaderboard_time"></span>
+            </div>
+            <div id="statsPlayerCellsEatenContainer">
+
+                <span id="statsText" class="stats-cells-eaten"></span>
+                <span id="statsSubtext" data-itr="stats_cells_eaten"></span>
+            </div>
+            <div id="statsTopPositionContainer">
+
+                <span id="statsText" class="stats-top-position">?</span>
+                <span id="statsSubtext" data-itr="stats_top_position"></span>
+            </div>
+            <hr style="position:absolute;width:100%;margin:0px;" /><br><br><br><br><br><br><br><br><br>
+            <button style="background-color:#3a5594;border-color:#3a5594;height:35px;width:290px;border:0;" onclick="closeStats();"><center><p style="margin:0 auto; color:#ffffff; font-size:17px;"><strong>Continue</strong>
+</p></center></button>
+
+        </div>
+
+    </div>
+
+    <div id="connecting" style="display:none;position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 100; background-color: rgba(0,0,0,0.5);">
+
+        <div style="width: 350px; background-color: #FFFFFF; margin: 100px auto; border-radius: 10px; padding: 5px 15px 5px 15px;">
+
+            <h2><span data-itr="connecting"></span></h2>
+
+            <div data-itr="connect_help">
+                <p>
+            </div><br />
+
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="canvas" width="800" height="600">&nbsp;</canvas>
+
+    <div id="chat_settings">
+        <button class="btn btn-primary" type="button" onClick="toggleChatMode(); return false;">
+Herkes <span class="badge">0</span>
+</button>
+    </div>
+
+
+    <input type="text" id="chat_textbox" maxlength="200" placeholder="Chat" />
+    <div style="font-family:'Ubuntu'">&nbsp;</div>
+    <div style="position:absolute;left:15px;top:5px;width:275px;height:47px;z-index:0">
+
+        </body>
+        <div id="leaderboard" style="display: none;">
+            <div>
+
+
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#skor" data-itr="score" aria-controls="skor" role="tab" data-toggle="tab">Skor</a></li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="skor">
+                        <table bgcolor="#000" class="table table-striped" style="font-family: 'Ubuntu';font-size: 12px;">
+                            <tbody style="color: #EC971F">
+                                <tr>
+                                    <td>#</td>
+                                    <td data-itr="nickname"></td>
+                                    <td data-itr="score"></td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#0791ff">
+                                <tr>
+                                    <td>1</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("EysEysLorker"); '>EysEysLorker</span></td>
+                                    <td>58,235,583</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#5a07ff">
+                                <tr>
+                                    <td>2</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("Wilkerson123"); '>☠Ŵ!ŁŁ☠</span></td>
+                                    <td>41,896,242</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#ff07fe">
+                                <tr>
+                                    <td>3</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("görkem"); '>-ＲＡＳＫ��</span></td>
+                                    <td>38,888,136</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#ffa507">
+                                <tr>
+                                    <td>4</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("musa"); '>^^Musa^^</span></td>
+                                    <td>26,953,401</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#ff0774">
+                                <tr>
+                                    <td>5</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("TekmeciGT"); '>TekmeciGT</span></td>
+                                    <td>21,859,835</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#077fff">
+                                <tr>
+                                    <td>6</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("DESTROYER"); '>DESTROYER</span></td>
+                                    <td>19,446,973</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#3aff07">
+                                <tr>
+                                    <td>7</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("elvin_pro"); '>elvin_pro</span></td>
+                                    <td>18,312,624</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#ff07ed">
+                                <tr>
+                                    <td>8</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("sametbey1661"); '>รคᗰ€Ŧ�</span></td>
+                                    <td>16,681,054</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#07a8ff">
+                                <tr>
+                                    <td>9</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("eneslider"); '>☯☢EnesLider</span></td>
+                                    <td>16,461,458</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#ff076e">
+                                <tr>
+                                    <td>10</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("Emre"); '>Emre</span></td>
+                                    <td>13,467,949</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="lvl">
+                        <table class="table table-striped" style="font-family: 'Ubuntu';font-size: 12px;">
+                            <tbody style="color: #EC971F">
+                                <tr>
+                                    <td>#</td>
+                                    <td data-itr="nickname"></td>
+                                    <td>Level</td>
+                                </tr>
+                            </tbody>
+
+                            <tbody style="color:#0791ff">
+                                <tr>
+                                    <td>1</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("EysEysLorker"); '>EysEysLorker</span></td>
+                                    <td>1,075</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#5a07ff">
+                                <tr>
+                                    <td>2</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("Wilkerson123"); '>☠Ŵ!ŁŁ☠</span></td>
+                                    <td>911</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#ff07fe">
+                                <tr>
+                                    <td>3</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("görkem"); '>-ＲＡＳＫ��</span></td>
+                                    <td>878</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#ffa507">
+                                <tr>
+                                    <td>4</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("musa"); '>^^Musa^^</span></td>
+                                    <td>730</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#ff0774">
+                                <tr>
+                                    <td>5</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("TekmeciGT"); '>TekmeciGT</span></td>
+                                    <td>657</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#077fff">
+                                <tr>
+                                    <td>6</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("DESTROYER"); '>DESTROYER</span></td>
+                                    <td>620</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#3aff07">
+                                <tr>
+                                    <td>7</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("elvin_pro"); '>elvin_pro</span></td>
+                                    <td>601</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#ff07ed">
+                                <tr>
+                                    <td>8</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("sametbey1661"); '>รคᗰ€Ŧ�</span></td>
+                                    <td>574</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#07a8ff">
+                                <tr>
+                                    <td>9</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("eneslider"); '>☯☢EnesLider</span></td>
+                                    <td>570</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="color:#ff076e">
+                                <tr>
+                                    <td>10</td>
+                                    <td><span style="cursor:pointer" onclick='$("#modal").modal("show");profil("Emre"); '>Emre</span></td>
+                                    <td>515</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div id="loginForm" style="display: none;">
+            <hr>
+
+
+            <div class="col-md-4"></div>
+            <section class="login-form">
+                <form id="login_form">
+                    <input name="name" data-plc="username" id="nameL" type="text" maxlength="14" class="form-control input-lg"></br>
+                    <input name="password" data-plc="password" id="passwordL" type="password" maxlength="12" class="form-control input-lg"></br>
+                    <span onclick="login();" data-itr="login_and_play" class="btn btn-primary" style="width: 100%"></span>
+
+                    </br>
+                    <div id="sonucL" style="display: none" class="alert alert-warning"></div>
+
+                </form>
+
+
+            </section>
+            </br>
+        </div>
+        <div id="registerForm" style="display: none;">
+            <hr>
+
+
+            <div class="col-md-4"></div>
+            <section class="login-form">
+                <form id="register_form">
+                    <input name="name" data-plc="username" id="nameR" type="text" maxlength="14" class="form-control input-lg"></br>
+                    <input name="valid" data-plc="nickname" id="valid" type="text" maxlength="14" class="form-control input-lg"></br>
+                    <input name="password" data-plc="password" id="passwordR" type="password" maxlength="12" class="form-control input-lg"></br>
+
+                    <span onclick="register();" data-itr="register" class="btn btn-warning" style="width: 100%"></span>
+
+                    </br>
+                    <div id="sonucR" style="display: none" class="alert alert-warning"></div>
+
+                </form>
+
+
+            </section>
+            </br>
+        </div>
+        <div id="agar" style="display: none;"></div>
+        <script>
+            var stats = new Stats();
+            document.body.appendChild(stats.domElement);
+
+            stats.setMode(0);
+            setInterval(function() {
+
+
+                stats.begin();
+                stats.end();
+
+            }, 1E3 / 60);
+        </script>
+        <script type="text/javascript">
+            $('.copy-party-token').click(function() {
+                var i = $('.partyToken:visible')[0];
+                i.setSelectionRange(0, i.value.length);
+                i.select();
+                try {
+                    document.execCommand('copy');
+                } catch (e) {}
+            });
+            $('input').keypress(function(e) {
+                if (e.which == '13') {
+                    e.preventDefault();
+                    if (!isSpectating) setNick(document.getElementById('nick').value);
+                }
+            });
+        </script>
+        <script src="./js/agar.js"></script>
+    </div>
+
+</html>
